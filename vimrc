@@ -12,7 +12,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-rails'
 Plugin 'itchyny/lightline.vim'
-"Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
 

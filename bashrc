@@ -33,3 +33,9 @@ export EDITOR=vim
 # Ignore case during tab completion.
 bind 'set completion-ignore-case on'
 
+#git
+alias gs='git status'
+alias gc='git commit'
+alias gb='git branch'
+alias ga='git add'
+alias gd='git diff'

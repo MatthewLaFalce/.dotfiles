@@ -21,7 +21,7 @@ alias ....='cd ..; cd ..; cd ..'
 
 # Shortcuts to vimrc and bashrc
 alias vimrc='vim ~/.vimrc'
-alias bashrc='vim ~/.bashrc'
+alias bashrc='vim ~/.bash_profile'
 alias loadbash='source ~/.bash_profile'
 
 # Let there be color in grep!

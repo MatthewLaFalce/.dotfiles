@@ -10,12 +10,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-signify'
-
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'morhetz/gruvbox'
-
 call plug#end()
 
 filetype plugin indent on

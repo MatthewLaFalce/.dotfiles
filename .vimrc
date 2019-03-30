@@ -4,20 +4,19 @@ filetype off
 set number
 set splitbelow
 set splitright
-"set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'morhetz/gruvbox'
-Plugin 'tpope/vim-rails'
-Plugin 'itchyny/lightline.vim'
-Plugin 'scrooloose/nerdtree'
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
 
-call vundle#end()           
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'mhinz/vim-signify'
 
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'morhetz/gruvbox'
+
+call plug#end()
 
 filetype plugin indent on
 "Put your non-Plugin stuff after this line
@@ -51,9 +50,14 @@ colorscheme gruvbox
 set termguicolors
 set cursorline
 
-" air-line
-"let g:airline_theme='luna'
-"let g:airline_powerline_fonts = 1
+"Sysntastically
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "show existing tab with 2 spaces width "
 set tabstop=2

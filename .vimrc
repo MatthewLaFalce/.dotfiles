@@ -59,13 +59,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"show existing tab with 2 spaces width "
-set tabstop=2
-"when indenting with '>', use 2 spaces width " 
-set shiftwidth=2
-"Change tabs to spaces "
-set expandtab
+"Tab Settings
+set tabstop=2 "show existing tab with 2 spaces width "
+set shiftwidth=2 "when indenting with '>', use 2 spaces width " 
+set expandtab "Change tabs to spaces "
 set smartindent
+
 "Disable swap file"
 set noswapfile
 
@@ -73,11 +72,9 @@ set noswapfile
 set scrolloff=3
 set lazyredraw
 
-"Show immediately where the so-far typed pattern matches."
-set incsearch
-
-"Highlight search term"
-set hlsearch
+"Search Settings
+set incsearch "Show immediately where the so-far typed pattern matches."
+set hlsearch "Highlight search term"
 
 "Always show the status of the file"
 set laststatus=2

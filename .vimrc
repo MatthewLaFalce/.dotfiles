@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'mhinz/vim-signify'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'

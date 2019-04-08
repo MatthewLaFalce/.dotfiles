@@ -3,12 +3,16 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 export PS1="\[\033[36m\]\u\[\033[94m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\[\033[95m\]\$(parse_git_branch)\[\033[00m\]$ "
+
 export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
+export LSCOLORS=GxFxBxDxCxegedabagacad
 
 #basics
-alias l='ls -lah'
 alias ls='ls -l'
+alias l='ls -ah'
+alias lh='l -d .?*'
+alias ld='l -d */'
+alias lhd='l -d .?*/'
 alias cl='clear; l'
 alias c='clear'
 alias q='exit'

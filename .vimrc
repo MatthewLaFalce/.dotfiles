@@ -80,7 +80,7 @@ set laststatus=2
 
 "jk is escape"
 inoremap jk <esc>
-
+map <silent> <C-n> :NERDTreeToggle<CR>
 
 
 

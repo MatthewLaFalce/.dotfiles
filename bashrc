@@ -1,11 +1,15 @@
 #.bashrc
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-export PS1="\[\033[36m\]\u\[\033[94m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\[\033[95m\]\$(parse_git_branch)\[\033[00m\]$ "
+#parse_git_branch() {
+#  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+#}
+#export PS1="\[\033[36m\]\u\[\033[94m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\[\033[95m\]\$(parse_git_branch)\[\033[00m\]$ "
 
 export CLICOLOR=1
 export LSCOLORS=GxFxBxDxCxegedabagacad
+
+#curl https://raw.githubusercontent.com/riobard/bash-powerline/master/bash-powerline.sh > ~/.bash-powerline.sh
+source ~/.bash-powerline.sh
+
 
 #basics
 alias ls='ls -l'

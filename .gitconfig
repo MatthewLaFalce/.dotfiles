@@ -1,5 +1,6 @@
 [user]
   name = Matthew LaFalce
+  email = mlafalce206@gmail.com
 [core]
     editor = vim
 [filter "lfs"]

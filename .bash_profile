@@ -7,8 +7,8 @@ export LSCOLORS=GxFxBxDxCxegedabagacad
 export GREP_OPTIONS=' — color=auto'
 export EDITOR=vim
 
-source ~/.bash_aliases
-source ~/.bash-powerline.sh
+source ~/.dotfiles/.bash_aliases
+source ~/.dotfiles/.bash-powerline.sh
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

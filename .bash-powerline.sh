@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# sourced from riobard/bash-powerline
 
 ## Uncomment to disable git info
 #POWERLINE_GIT=0

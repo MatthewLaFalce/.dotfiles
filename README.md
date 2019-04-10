@@ -2,7 +2,7 @@
 
 ### Prerequisites
 - MacOS
-- VimPlug Installed
+- VimPlug (See below)
 - Powerline Fonts
 
 ### Installation

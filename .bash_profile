@@ -19,8 +19,7 @@ bind 'set completion-ignore-case on'
 #tell a random chucknorris joke
 echo
 YELLOW='\033[03;93m'
- 
-echo $(curl -s --request GET --url 'https://api.chucknorris.io/jokes/random' --header 'accept: (application/json|text/plain)' | python -c 'import sys, json; print "\n\n"+json.load(sys.stdin)["value"]+"\n\n"')
+echo -e ${YELLOW}$(curl -s --request GET --url 'https://api.chucknorris.io/jokes/random' --header 'accept: (application/json|text/plain)' | python -c 'import sys, json; print "\n\n"+json.load(sys.stdin)["value"]+"\n\n"')
 echo 
 
 #parse_git_branch() {

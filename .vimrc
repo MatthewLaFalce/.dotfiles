@@ -81,6 +81,7 @@ set laststatus=2
 "jk is escape"
 inoremap jk <esc>
 map <silent> <C-n> :NERDTreeToggle<CR>
-
+map <F5> :setlocal spell! spelllang=en_us<CR>
+map <F7> gg=G<C-o><C-o>
 
 

@@ -18,3 +18,12 @@ ln -s .dotfiles/.gitconfig
 ln -s .dotfiles/.vimrc
 ```
 3) Close and reopen terminal
+
+## Screenshots
+bash prompt
+
+![alt text](images/bash_prompt.png)
+
+vim editor
+
+![alt text](images/vim_editor.png)

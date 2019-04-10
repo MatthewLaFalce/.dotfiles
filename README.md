@@ -8,7 +8,7 @@
 ### Installation
 - Clone this project into your home directory
 
-```bash
+``` bash
 git clone git@github.com:MatthewLaFalce/.dotfiles.git
 ```
 

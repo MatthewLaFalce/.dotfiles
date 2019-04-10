@@ -22,7 +22,7 @@ alias ....='cd ..; cd ..; cd ..'
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bash_profile'
 alias loadbash='source ~/.bash_profile'
-alias dotfile='cd; cd .dotfile/'
+alias dotfile='cd; cd .dotfiles/'
 
 #git
 alias gs='git status'

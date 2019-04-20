@@ -22,7 +22,7 @@ alias ....='cd ..; cd ..; cd ..'
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bash_profile'
 alias loadbash='source ~/.bash_profile'
-alias dotfile='cd; cd .dotfiles/'
+alias dotfile='cd; cd dotfiles/'
 
 #git
 alias gs='git status'
@@ -32,3 +32,11 @@ alias ga='git add'
 alias gd='git diff'
 alias gp='git push'
 alias gt='git tree'
+
+#rails
+alias rails='bundle exec rails'
+alias rs='rails s'
+alias rc='rails c'
+
+#run script to tell a joke
+alias joke='dotfile; sh joke_generator.sh'

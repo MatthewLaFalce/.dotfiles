@@ -54,9 +54,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_enable_balloons = 1
 
 "Tab Settings
 set tabstop=2 "show existing tab with 2 spaces width "
@@ -82,6 +83,6 @@ set laststatus=2
 inoremap jk <esc>
 map <silent> <C-n> :NERDTreeToggle<CR>
 map <F5> :setlocal spell! spelllang=en_us<CR>
+map <F6> :%!python -m json.tool<CR>
 map <F7> gg=G<C-o><C-o>
-
 

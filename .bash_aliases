@@ -1,7 +1,7 @@
 #.bash_aliases
 
 #basics
-alias ls='ls -l'
+alias ls='ls -l --color=auto'
 alias l='ls -ah'
 alias lh='l -d .?*'
 alias ld='l -d */'
@@ -22,7 +22,7 @@ alias ....='cd ..; cd ..; cd ..'
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bash_profile'
 alias loadbash='source ~/.bash_profile'
-alias dotfile='cd; cd dotfiles/'
+alias dotfile='cd; cd .dotfiles/'
 
 #git
 alias gs='git status'

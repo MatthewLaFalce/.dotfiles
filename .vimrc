@@ -4,6 +4,7 @@ filetype off
 set number
 set splitbelow
 set splitright
+set cursorline
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
@@ -15,6 +16,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'morhetz/gruvbox'
+Plug 'sheerun/vim-wombat-scheme'
 call plug#end()
 
 filetype plugin indent on
@@ -41,13 +43,6 @@ let g:lightline = {
       \ 'separator': { 'left': ' ', 'right': ' ' },
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
-
-"Default color scheme"
-set background=dark
-let g:solarized_termcolors=256
-colorscheme gruvbox
-set termguicolors
-set cursorline
 
 "Sysntastically
 set statusline+=%#warningmsg#
@@ -89,8 +84,26 @@ map <F7> gg=G<C-o><C-o>
 let hostname = substitute(system('hostname'), '\n', '', '')
 if hostname == "vision"
   echo "vision"
+  if !has('gui_running')
+    set t_Co=256
+  endif
+  colorscheme wombat
+  "Signify
+  highlight SignColumn ctermbg=NONE cterm=NONE guibg=NONE gui=NONE
+  " highlight lines in Sy and vimdiff etc.)
+  highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+  highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+  highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+  " highlight signs in Sy
+  highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+  highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+  highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
 elseif hostname == "Matthews-MacBook-Pro.local"
   echo hostname
+  set background=dark
+  let g:solarized_termcolors=256
+  colorscheme gruvbox
+  set termguicolors
 end
 
 

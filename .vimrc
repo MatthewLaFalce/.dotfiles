@@ -86,3 +86,11 @@ map <F5> :setlocal spell! spelllang=en_us<CR>
 map <F6> :%!python -m json.tool<CR>
 map <F7> gg=G<C-o><C-o>
 
+let hostname = substitute(system('hostname'), '\n', '', '')
+if hostname == "vision"
+  echo "vision"
+elseif hostname == "Matthews-MacBook-Pro.local"
+  echo hostname
+end
+
+

@@ -1,7 +1,7 @@
 #.bash_aliases
 
 #basics
-alias ls='ls -l --color=auto'
+alias ls='ls -l'
 alias l='ls -ah'
 alias lh='l -d .?*'
 alias ld='l -d */'

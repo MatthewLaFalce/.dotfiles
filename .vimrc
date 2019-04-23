@@ -81,8 +81,8 @@ map <F5> :setlocal spell! spelllang=en_us<CR>
 map <F6> :%!python -m json.tool<CR>
 map <F7> gg=G<C-o><C-o>
 
-let hostname = substitute(system('hostname'), '\n', '', '')
-if hostname == "vision"
+let os = substitute(system('uname'), '\n', '', '')
+if os == "Linux"
   if !has('gui_running')
     set t_Co=256
   endif
@@ -97,7 +97,7 @@ if hostname == "vision"
   highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
   highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
   highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
-elseif hostname == "Matthews-MacBook-Pro.local"
+elseif os == "Darwin"
   set background=dark
   let g:solarized_termcolors=256
   colorscheme gruvbox

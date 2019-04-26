@@ -46,7 +46,7 @@ alias rs='rails s'
 alias rc='rails c'
 
 #run script to tell a joke
-alias joke='sh ~/dotfiles/joke_generator.sh'
+alias joke='sh ~/.dotfiles/joke_generator.sh'
 
 #start pgcli with io_development
 alias db='pgcli io_development'

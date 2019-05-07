@@ -31,17 +31,13 @@ alias bashrc='vim ~/.bash_profile'
 alias loadbash='source ~/.bash_profile'
 alias dotfile='cd; cd .dotfiles/'
 
-pushFunc(){
-  git push || git push --set-upstream origin $(git branch | grep \* | cut -d ' ' -f2)
-}
-
 #git
 alias gs='git status'
 alias gc='git commit'
 alias gb='git branch'
 alias ga='git add'
 alias gd='git diff'
-alias gp='pushFunc'
+alias gp='git push'
 alias gt='git tree'
 
 #rails

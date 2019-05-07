@@ -32,9 +32,6 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-#Set terminal to vi mode
-set -o vi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -88,4 +85,18 @@ if [ -f "${SSH_ENV}" ]; then
 else
   start_agent;
 fi
+
+updateDotfiles() {
+  dotfile
+  results=$(git up)
+  if [[ $results == *"Already up-to-date"* ]]; then
+    output="Configuration is: "
+    echo "$output$(echo $results | cut -d ' ' -f 3,4)"
+  else
+    source .bash_profile
+  fi
+  cd
+}
+
+updateDotfiles
 

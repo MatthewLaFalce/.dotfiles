@@ -87,7 +87,7 @@ else
 fi
 
 updateDotfiles() {
-  if ping -q -c 1 -W 1 google.com >/dev/null; then
+  if ping -q -c 1 -W 1 github.com > /dev/null 2>&1; then
     dotfile
     git fetch
     status=$(git status -sb)

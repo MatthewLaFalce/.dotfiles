@@ -87,16 +87,18 @@ else
 fi
 
 updateDotfiles() {
-  dotfile
-  git fetch
-  status=$(git status -sb)
-  if [[ $status == *"behind"* ]]; then
-    echo "Config files: Behind"
-    git up
-    source .bash_profile
-    echo "Config files: Updated"
+  if ping -q -c 1 -W 1 google.com >/dev/null; then
+    dotfile
+    git fetch
+    status=$(git status -sb)
+    if [[ $status == *"behind"* ]]; then
+      echo "Config files: Behind"
+      git up
+      source .bash_profile
+      echo "Config files: Updated"
+    fi
+    cd
   fi
-  cd
 }
 
 updateDotfiles

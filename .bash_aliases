@@ -36,7 +36,7 @@ pushFunc(){
 }
 
 #git
-alias gs='git status'
+alias gs='git status -sb'
 alias gc='git commit'
 alias gb='git branch'
 alias ga='git add'

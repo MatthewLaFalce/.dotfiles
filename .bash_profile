@@ -88,16 +88,12 @@ fi
 
 updateDotfiles() {
   dotfile
-  remote_commit_id=$(git log --format="%H" -n 1)
-  echo $(remote_commit_id)
-
-  if [[ $results == *"Already up-to-date"* ]]; then
-    echo one
-    output="Configuration is: "
-    echo "$output$(echo $results | cut -d ' ' -f 3,4)"
+  status=$(git status -sb)
+  echo $status
+  if [[ $status == *"behind"* ]]; then
+    echo behind
   else
-    echo two
-    source .bash_profile
+    echo equal or ahead
   fi
   cd
 }

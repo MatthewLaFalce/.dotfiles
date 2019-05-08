@@ -92,6 +92,9 @@ updateDotfiles() {
   echo $status
   if [[ $status == *"behind"* ]]; then
     echo behind
+    git up
+    source .bash_profile
+    echo Updated
   else
     echo equal or ahead
   fi

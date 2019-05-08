@@ -95,8 +95,6 @@ updateDotfiles() {
     git up
     source .bash_profile
     echo "Config files: Updated"
-  else
-    echo "Config files: equal or ahead"
   fi
   cd
 }

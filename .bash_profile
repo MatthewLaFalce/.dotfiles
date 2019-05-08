@@ -88,15 +88,15 @@ fi
 
 updateDotfiles() {
   dotfile
+  git fetch
   status=$(git status -sb)
-  echo $status
   if [[ $status == *"behind"* ]]; then
-    echo behind
+    echo "Config files: Behind"
     git up
     source .bash_profile
-    echo Updated
+    echo "Config files: Updated"
   else
-    echo equal or ahead
+    echo "Config files: equal or ahead"
   fi
   cd
 }

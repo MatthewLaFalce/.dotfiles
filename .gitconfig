@@ -9,7 +9,7 @@
   process = git-lfs filter-process
   required = true
 [alias]
-  lg = "log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative"
+ lg = "log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
   up = "!git remote update -p; git merge --ff-only @{u}"
   tree = "!git lg --graph"
   unstage = "reset HEAD"

@@ -30,7 +30,7 @@ alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bash_profile'
 alias loadbash='source ~/.bash_profile'
 alias dotfile='cd; cd .dotfiles/'
-alias vpdf='cd; cd vpdf; git up'
+alias vpdf='cd; cd vPDF; git up'
 
 pushFunc(){
   git push || git push --set-upstream origin $(git branch | grep \* | cut -d ' ' -f2)

@@ -1,9 +1,11 @@
 # .dotfiles
+<p>
   <img src="https://img.shields.io/github/last-commit/matthewlafalce/.dotfiles.svg"/>
   <img src="https://img.shields.io/github/issues-closed/MatthewLaFalce/.dotfiles.svg"/>
   <img src="https://img.shields.io/github/forks/MatthewLaFalce/.dotfiles.svg"/>
   <img src="https://img.shields.io/github/stars/MatthewLaFalce/.dotfiles.svg"/>
   <img src="https://img.shields.io/github/license/MatthewLaFalce/.dotfiles.svg"/>  
+</p>
 
 ## Prerequisites
 - MacOS/Linux

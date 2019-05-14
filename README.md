@@ -1,5 +1,6 @@
 # .dotfiles
-
+  <img src="https://img.shields.io/github/last-commit/matthewlafalce/.dotfiles.svg"/>
+  
 ## Prerequisites
 - MacOS/Linux
 - [VimPlug](https://github.com/junegunn/vim-plug)

@@ -31,7 +31,7 @@ alias bashrc='vim ~/.bash_profile'
 alias loadbash='source ~/.bash_profile'
 alias dotfile='cd; cd .dotfiles/'
 alias vpdf='cd; cd vPDF; git up'
-
+alias jek='bundle _1.16.0_ exec jekyll serve'
 pushFunc(){
   git push || git push --set-upstream origin $(git branch | grep \* | cut -d ' ' -f2)
 }

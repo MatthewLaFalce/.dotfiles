@@ -22,8 +22,9 @@ alias k='kill'
 
 #directories
 alias ..='cd ..'
-alias ...='cd ..; cd ..'
-alias ....='cd ..; cd ..; cd ..'
+alias ...='..; cd ..'
+alias ....='...; cd ..'
+alias .....='....; cd ..'
 
 # Shortcuts to vimrc and bashrc
 alias vimrc='vim ~/.vimrc'

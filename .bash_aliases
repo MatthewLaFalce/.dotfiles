@@ -59,3 +59,6 @@ alias joke='sh ~/.dotfiles/joke_generator.sh'
 #start pgcli with io_development
 alias db='pgcli io_development'
 alias dev='pgcli vpdf_development'
+
+#json tool
+alias json="cat $1 | python -m json.tool"

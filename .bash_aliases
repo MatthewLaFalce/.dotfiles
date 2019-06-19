@@ -45,7 +45,7 @@ alias ga='git add'
 alias gd='git diff'
 alias gp='pushFunc'
 alias gt='git tree'
-
+alias github='start https://github.com/innovative || open https://github.com/innovative'
 #rails
 alias rails='bundle exec rails'
 alias rs='rails s'

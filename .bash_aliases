@@ -38,6 +38,7 @@ pushFunc(){
 }
 
 #git
+alias gu='git up'
 alias gs='git status -sb'
 alias gc='git commit'
 alias gb='git branch'
@@ -46,6 +47,7 @@ alias gd='git diff'
 alias gp='pushFunc'
 alias gt='git tree'
 alias github='start https://github.com/innovative 2>/dev/null || open https://github.com/MatthewLaFalce?tab=repositories'
+
 #rails
 alias rails='bundle exec rails'
 alias rs='rails s'
@@ -58,7 +60,9 @@ alias joke='sh ~/.dotfiles/joke_generator.sh'
 
 #start pgcli with io_development
 alias db='pgcli io_development'
-alias dev='pgcli vpdf_development'
+alias dev='pgcli vextract_development'
+
+alias grouper='ssh matthew@grouper.winepos.com'
 
 #json tool
 alias json="cat $1 | python -m json.tool"

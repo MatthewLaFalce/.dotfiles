@@ -16,8 +16,7 @@ parse_git_branch() {
 
 updateDotfiles() {
   if ping -q -c 1 -W 1 github.com > /dev/null 2>&1; then
-    dotfile
-    git fetch
+    cd .dotfiles; git fetch
     status=$(git status -sb)
     if [[ $status == *"behind"* ]]; then
       echo "Config files: Behind"

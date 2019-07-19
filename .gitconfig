@@ -21,3 +21,5 @@
   pg = "diff --shortstat"
 [color]
   ui = auto
+[hub]
+	protocol = ssh

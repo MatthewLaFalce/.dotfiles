@@ -60,6 +60,10 @@ if [ -f '/Users/Matt/google-cloud-sdk/path.bash.inc' ]; then . '/Users/Matt/goog
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/Matt/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/Matt/google-cloud-sdk/completion.bash.inc'; fi
 
+# The following line enables bash completion for the hub command
+# Repo: https://github.com/github/hub
+if [ -f /path/to/hub.bash_completion ]; then . /path/to/hub.bash_completion; fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

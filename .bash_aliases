@@ -49,6 +49,8 @@ alias gdd='c;gs;gd'
 alias gp='pushFunc'
 alias gt='git tree'
 alias github='start https://github.com/innovative 2>/dev/null || open https://github.com/MatthewLaFalce?tab=repositories'
+alias pull-request='git pull-request -a MatthewLaFalce'
+alias issues='git issue'
 
 #rails
 alias rails='bundle exec rails'

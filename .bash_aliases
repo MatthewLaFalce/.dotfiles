@@ -7,6 +7,14 @@ if [ -x /usr/bin/dircolors ]; then
   alias grep='grep --color=auto'
 fi
 
+pushFunc(){
+  git push || git push --set-upstream origin $(git branch | grep \* | cut -d ' ' -f2)
+}
+
+openFunc(){
+  open $1 2>/dev/null || start $1
+}
+
 #basics
 alias ll='ls -l'
 alias l='ll -ah'
@@ -16,9 +24,7 @@ alias lhd='l -d .?*/'
 alias cl='clear; l'
 alias c='clear'
 alias q='exit'
-alias h='history'
-alias t='time'
-alias k='kill'
+alias open='openFunc'
 
 #directories
 alias ..='cd ..'
@@ -29,13 +35,10 @@ alias .....='....; cd ..'
 # Shortcuts to vimrc and bashrc
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bash_profile'
+alias bashalias='vim ~/.bash_aliases'
 alias loadbash='source ~/.bash_profile'
 alias dotfile='cd; cd .dotfiles/'
-alias vpdf='cd; cd vPDF; git up'
 alias jek='bundle _1.16.0_ exec jekyll serve'
-pushFunc(){
-  git push || git push --set-upstream origin $(git branch | grep \* | cut -d ' ' -f2)
-}
 
 #git
 alias git='hub'
@@ -48,7 +51,7 @@ alias gd='git diff'
 alias gdd='c;gs;gd'
 alias gp='pushFunc'
 alias gt='git tree'
-alias github='start https://github.com/innovative 2>/dev/null || open https://github.com/MatthewLaFalce?tab=repositories'
+alias github='git browse MatthewLaFalce'
 alias pull-request='git pull-request -a MatthewLaFalce'
 alias issues='git issue'
 

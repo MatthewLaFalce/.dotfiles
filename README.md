@@ -21,7 +21,8 @@
 - [coreutils](https://formulae.brew.sh/formula/coreutils)
 - [cowsay](https://formulae.brew.sh/formula/cowsay)
 - [lolcat](https://formulae.brew.sh/formula/lolcat)
-
+- [hub](https://github.com/github/hub)
+- [standup](https://github.com/kamranahmedse/git-standup)
 
 ## Install
 
@@ -66,6 +67,9 @@ bash prompt
   brew install cowsay
   brew install lolcat
   gem install lolcat
+  brew install hub
+  brew update && brew install git-standup
+
 
 ##Clone this git repo
   git clone git@github.com:MatthewLaFalce/.dotfiles.git

@@ -50,7 +50,6 @@ SSH_ENV="$HOME/.ssh/environment"      # Set SSH ENV
 bind 'set completion-ignore-case on'  # Ignore case during tab completion.
 shopt -s histappend              # append to the history file, don't overwrite it
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"    # Load RVM into a shell session *as a function*
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                        # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"      # This loads nvm bash_completion
 
@@ -78,6 +77,8 @@ fi
 if [ -d /usr/local/share/chruby ]; then
   source /usr/local/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
+
+  RUBIES+=(~/.RVM/RUBIES/*)
 fi
 
 if [ -f .dotfiles/.bash_aliases ]; then

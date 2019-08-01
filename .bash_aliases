@@ -51,7 +51,7 @@ alias gd='git diff'
 alias gdd='c;gs;gd'
 alias gp='pushFunc'
 alias gt='git tree'
-alias github='git browse MatthewLaFalce'
+alias github='open https://github.com/MatthewLaFalce'
 alias pull-request='git pull-request -a MatthewLaFalce'
 alias issues='git issue'
 

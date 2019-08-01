@@ -60,7 +60,6 @@ alias rails='bundle exec rails'
 alias rs='rails s'
 alias rc='rails c'
 alias rj='bundle exec que ./config/environment.rb'
-alias deploy='bundle exec cap production deploy'
 
 #run script to tell a joke
 alias joke='sh ~/.dotfiles/joke_generator.sh'

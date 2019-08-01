@@ -29,7 +29,7 @@ updateDotfiles() {
 }
 updateDotfiles
 
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md
 export CLICOLOR=1
 export EDITOR=vim
 export LESS_TERMCAP_mb=$'\E[01;31m'

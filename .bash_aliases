@@ -69,6 +69,7 @@ alias db='pgcli io_development'
 alias dev='pgcli vextract_development'
 
 alias grouper='ssh matthew@grouper.winepos.com'
+alias vextractor='ssh deploy@vextractor.winepos.com'
 
 #json tool
 alias json="cat $1 | python -m json.tool"

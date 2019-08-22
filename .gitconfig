@@ -28,3 +28,6 @@
 	program = gpg
 [commit]
 	gpgsign = true
+  protocol = ssh
+[help]
+	autocorrect = 1

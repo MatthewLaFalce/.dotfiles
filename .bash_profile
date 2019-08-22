@@ -29,7 +29,7 @@ updateDotfiles() {
 }
 updateDotfiles
 
-export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md
+export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md:$HOME/.dotfiles/
 export GPG_TTY=$(tty)
 export CLICOLOR=1
 export EDITOR=vim

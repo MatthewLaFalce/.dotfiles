@@ -23,3 +23,7 @@
   ui = auto
 [hub]
 	protocol = ssh
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true

@@ -1,10 +1,12 @@
 syntax on
-set nocompatible              
-filetype off                  
+set nocompatible
+filetype off
 set number
 set splitbelow
 set splitright
 set cursorline
+set backspace=indent,eol,start
+
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
@@ -56,7 +58,7 @@ let g:syntastic_enable_balloons = 1
 
 "Tab Settings
 set tabstop=2 "show existing tab with 2 spaces width "
-set shiftwidth=2 "when indenting with '>', use 2 spaces width " 
+set shiftwidth=2 "when indenting with '>', use 2 spaces width "
 set expandtab "Change tabs to spaces "
 set smartindent
 

@@ -71,4 +71,7 @@ alias vextractor='ssh deploy@vextractor.winepos.com'
 
 #json tool
 alias json="cat $1 | python -m json.tool"
-eval "$(thefuck --alias)"
+
+if [ "$(uname)" = "Darwin" ]; then
+  eval "$(thefuck --alias)"
+fi

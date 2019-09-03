@@ -30,7 +30,7 @@ updateDotfiles() {
 updateDotfiles
 
 export PATH="/usr/local/sbin:$PATH"
-export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md:$HOME/.dotfiles/
+export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md:$HOME/.dotfiles/bin
 export GPG_TTY=$(tty)
 export CLICOLOR=1
 export EDITOR=vim

@@ -61,9 +61,6 @@ alias rs='rails s'
 alias rc='rails c'
 alias rj='bundle exec que ./config/environment.rb'
 
-#run script to tell a joke
-alias joke='joke_generator.sh'
-
 #start pgcli with io_development
 alias db='pgcli io_development'
 alias dev='pgcli vextract_development'

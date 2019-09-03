@@ -32,6 +32,41 @@ git clone git@github.com:MatthewLaFalce/.dotfiles.git
 . install.sh
 ```
 
+## Simple Scripts
+
+### gen_weekly_status
+
+```bash
+# Uses the git standup CLI to generate a txt file of all of the commits
+# you have made to a project or batch of projects in the past 7 days
+```
+
+### release
+
+```bash
+# Generates release tags incrementally based on the option passed
+
+~  release -h
+usage: release [Mmp] [message]
+
+  -d Dry run
+  -h Display this help page
+  -M for a major release
+  -m for a minor release
+  -p for a patch release
+
+ Example: release -p "Some fix"
+ means create a patch release with the message "Some fix"
+ ```
+
+### worklist
+
+```bash
+# Shows all issues assigned to the specified user for every git sub
+# directory in the current working directory
+
+```
+
 ## Screenshots
 bash prompt
 

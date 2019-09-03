@@ -25,6 +25,7 @@ then
   echo "usage: $(basename $0) [Mmp] [message]"
   echo ""
   echo "  -d Dry run"
+  echo "  -h Display this help page"
   echo "  -M for a major release"
   echo "  -m for a minor release"
   echo "  -p for a patch release"

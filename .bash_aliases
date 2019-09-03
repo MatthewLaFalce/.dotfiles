@@ -25,6 +25,7 @@ alias cl='clear; l'
 alias c='clear'
 alias q='exit'
 alias open='openFunc'
+alias tree='c; tree --dirsfirst'
 
 #directories
 alias ..='cd ..'
@@ -70,3 +71,4 @@ alias vextractor='ssh deploy@vextractor.winepos.com'
 
 #json tool
 alias json="cat $1 | python -m json.tool"
+eval "$(thefuck --alias)"

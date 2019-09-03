@@ -1,7 +1,6 @@
 [user]
   name = Matthew LaFalce
   email = mlafalce206@gmail.com
-	signingkey = 7CE36B3164C3FB863D0442C76C13BAF5285E9EA8
 [core]
   editor = vim
 [filter "lfs"]
@@ -24,10 +23,7 @@
   ui = auto
 [hub]
 	protocol = ssh
-[gpg]
-	program = gpg
 [commit]
-	gpgsign = true
   protocol = ssh
 [help]
 	autocorrect = 1

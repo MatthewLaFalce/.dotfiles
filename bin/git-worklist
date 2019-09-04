@@ -4,13 +4,12 @@
 function usage() {
   cat <<EOS
 Usage:
-  git worklist [-a <assignee name>] [-m <max-dir-depth>] [-h] [-s] [-r]
+  git worklist [-a <assignee name>] [-m <max-dir-depth>] [-h] [-s]
 
   -a      - Specify assignee to restrict search to
   -m      - Specify the depth of recursive directory search
   -h      - Display this help screen
   -s      - Silences the no activity message (useful when running in a directory having many repositories)
-  -r      - Generate a file with the report
 
 Examples:
   git worklist -a "John Doe" -m 2
@@ -63,9 +62,9 @@ function runWorklist() {
 }
 
 ################ START OF SCRIPT #############################
-while getopts "hsm:a:r" opt; do
+while getopts "hsm:a" opt; do
   case $opt in
-    h|a|m|s|r)
+    h|a|m|s)
       declare "option_$opt=${OPTARG:-0}"
       ;;
     \?)
@@ -92,7 +91,7 @@ fi
 # Use colors, but only if connected to a terminal, and that terminal supports them.
 if [[ -t 1 ]] && [[ -n "$TERM" ]] && which tput &>/dev/null && tput colors &>/dev/null; then
   ncolors=$(tput colors)
-  if [[ -n "$ncolors" ]] && [[ "$ncolors" -ge 8 ]] && [[ -z "$option_r" ]] ; then
+  if [[ -n "$ncolors" ]] && [[ "$ncolors" -ge 8 ]]; then
     colored
   else
     uncolored
@@ -105,11 +104,6 @@ fi
 MAXDEPTH=2
 RAN_FROM_DIR=`pwd`
 REPORT_FILE_PATH="${RAN_FROM_DIR}/git-worklist-report.txt"
-
-# If report is to be generated, remove the existing report file if any
-if [[ ! -z $option_r ]] ; then
-  rm -rf ${REPORT_FILE_PATH}
-fi
 
 if [[ $option_m ]] ; then
   MAXDEPTH="$(($option_m + 1))"

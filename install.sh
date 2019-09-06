@@ -25,6 +25,9 @@ PACKAGES=(
 echo "Installing packages..."
 brew install ${PACKAGES[@]}
 
+echo "Installing casks..."
+brew cask install sampler
+
 echo "Cleaning up..."
 brew cleanup
 

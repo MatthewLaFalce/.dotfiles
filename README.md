@@ -15,9 +15,9 @@
 
 ## Prerequisites
 
-| Packages | Packages |
-| --- | --- |
-| [Coreutils](https://formulae.brew.sh/formula/coreutils) | [Cowsay](https://formulae.brew.sh/formula/cowsay) |
+| Packages | Packages | Casks |
+| --- | --- | --- |
+| [Coreutils](https://formulae.brew.sh/formula/coreutils) | [Cowsay](https://formulae.brew.sh/formula/cowsay) | [Sampler](https://github.com/sqshq/sampler) |
 | [Hub](https://github.com/github/hub) | [iTerm2](https://github.com/gnachman/iTerm2) |
 | [Lolcat](https://formulae.brew.sh/formula/lolcat) | [Powerline Fonts](https://github.com/powerline/fonts) |
 | [Standup](https://github.com/kamranahmedse/git-standup) | [VimPlug](https://github.com/junegunn/vim-plug) |
@@ -32,19 +32,17 @@ git clone git@github.com:MatthewLaFalce/.dotfiles.git
 . install.sh
 ```
 
-## Simple Scripts
+## Cool Features
 
-### gen_weekly_status
 
 ```bash
 # Uses the git standup CLI to generate a txt file of all of the commits
 # you have made to a project or batch of projects in the past 7 days
-```
+~  gen_weekly_status
 
-### release
 
-```bash
 # Generates release tags incrementally based on the option passed
+### release
 
 ~  release -h
 usage: release [Mmp] [message]
@@ -57,13 +55,10 @@ usage: release [Mmp] [message]
 
  Example: release -p "Some fix"
  means create a patch release with the message "Some fix"
- ```
 
-### worklist
-
-```bash
 # Shows all issues assigned to the specified user for every git sub
 # directory in the current working directory
+~  git-worklist
 
 ```
 

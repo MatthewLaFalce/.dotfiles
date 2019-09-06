@@ -1,6 +1,7 @@
 #!/bin/bash
 DATETIME=`date +%Y%m%d`;
 FILENAME=weekly_status_${DATETIME}.txt;
+git standup -f > /dev/null 2>&1
 git standup -r -s -d 7 >> /dev/null 2>&1;
 mv git-standup-report.txt weekly_status_reports/${FILENAME};
 git standup -s -d 7

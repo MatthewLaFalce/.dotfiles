@@ -26,6 +26,7 @@ alias c='clear'
 alias q='exit'
 alias open='openFunc'
 alias tree='c; tree --dirsfirst'
+alias gw='git-worklist'
 
 #directories
 alias ..='cd ..'
@@ -49,7 +50,7 @@ alias gc='git commit'
 alias gb='git branch'
 alias ga='git add'
 alias gd='git diff'
-alias gdd='c;gs;gd'
+alias gdd='c;gs;echo;echo;gd'
 alias gp='pushFunc'
 alias gt='git tree'
 alias github='open https://github.com/MatthewLaFalce'
@@ -68,6 +69,7 @@ alias dev='pgcli vextract_development'
 
 alias grouper='ssh matthew@grouper.winepos.com'
 alias vextractor='ssh deploy@vextractor.winepos.com'
+alias sgrouper='sftp matthew@grouper.winepos.com'
 
 #json tool
 alias json="cat $1 | python -m json.tool"

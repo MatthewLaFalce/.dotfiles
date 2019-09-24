@@ -57,6 +57,7 @@ alias gt='git tree'
 alias github='open https://github.com/MatthewLaFalce'
 alias pull-request='git pull-request -a MatthewLaFalce'
 alias issues='git issue'
+alias issue-create='git issue create -a MatthewLaFalce'
 
 #rails
 alias rails='bundle exec rails'

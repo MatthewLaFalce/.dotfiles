@@ -1,0 +1,1 @@
+sed -e 's/\/home\/vision\/Github\//# /' -e 's/  *#/  #/' -e 's/   /   <i><u><b>/' -e '/^  /s/$/<\/b><\/u><\/i><br>/' $1 > issues.md

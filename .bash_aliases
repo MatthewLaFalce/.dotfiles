@@ -27,6 +27,7 @@ alias q='exit'
 alias open='openFunc'
 alias tree='c; tree --dirsfirst'
 alias gw='git-worklist'
+alias gen-issue-report='git-worklist -s | clean-issues'
 alias dash='sampler -c ~/.dotfiles/sampler_config.yml'
 
 #directories

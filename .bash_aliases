@@ -15,6 +15,10 @@ openFunc(){
   open $1 2>/dev/null || start $1
 }
 
+currentBranch(){
+  git branch | grep \* | cut -d ' ' -f2
+}
+
 #basics
 alias ll='ls -l'
 alias l='ll -ah'
@@ -55,6 +59,7 @@ alias gd='git diff'
 alias gdd='c;gs;echo;echo;gd'
 alias gp='pushFunc'
 alias gt='git tree'
+alias gtt='gt master..$(currentBranch)'
 alias github='open https://github.com/MatthewLaFalce'
 alias pull-request='git pull-request -a MatthewLaFalce'
 alias issues='git issue'

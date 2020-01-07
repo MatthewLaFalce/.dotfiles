@@ -18,6 +18,9 @@ openFunc(){
 currentBranch(){
   git branch | grep \* | cut -d ' ' -f2
 }
+startDB(){
+  pgcli $(echo "Rails.configuration.database_configuration['development']['database']" | rc | grep '\"*\"' | sed 's/\"//g')
+}
 
 #basics
 alias ll='ls -l'
@@ -71,13 +74,13 @@ alias rs='rails s'
 alias rc='rails c'
 alias rj='bundle exec que ./config/environment.rb'
 
-#start pgcli with io_development
-alias db='pgcli io_development'
-alias dev='pgcli vextract_development'
+#start pgcli with a rails db
+alias rd='startDB'
 
-alias grouper='ssh matthew@grouper.winepos.com'
-alias vextractor='ssh deploy@vextractor.winepos.com'
-alias sgrouper='sftp matthew@grouper.winepos.com'
+alias sshconfig='vim ~/.ssh/config'
+alias grouper='ssh grouper'
+alias vextractor='ssh vextractor'
+alias sgrouper='sftp grouper'
 
 #json tool
 alias json="cat $1 | python -m json.tool"

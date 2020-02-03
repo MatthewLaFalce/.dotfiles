@@ -1,0 +1,23 @@
+#!/bin/bash
+
+usage="$(basename $0) [-h] DBNAME FILENAME -- program to dump the entire contents of a database intoa gziped file
+
+where:
+    -h  show this help text
+
+    "
+
+function display_usage() {
+  echo "$usage"
+  return
+}
+
+if [ ! -z "$1" ]; then
+  if [ ! -z "$2" ]; then
+    pg_dump -Ox $1 | gzip > $2
+  else
+    display_usage
+  fi
+else
+  display_usage
+fi

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+usage="$(basename $0)  [-h] DBNAME FILENAME -- script to create a database from a gzip file
+
+where:
+    -h  show this help text
+
+    "
+
+function display_usage() {
+  echo "$usage"
+  return
+}
+
+if [ ! -z "$1" ]; then
+  if [ ! -z "$2" ]; then
+    dropdb $1; createdb $1; gzip -dc $2 | psql $1 >/dev/null
+  else
+    display_usage
+  fi
+else
+  display_usage
+fi

@@ -18,12 +18,9 @@ openFunc(){
 currentBranch(){
   git branch | grep \* | cut -d ' ' -f2
 }
-startDB(){
-  pgcli $(echo "Rails.configuration.database_configuration['development']['database']" | rc | grep '\"*\"' | sed 's/\"//g')
-}
 
 #basics
-alias ll='ls -l'
+alias ll='ls -l --group-directories-first'
 alias l='ll -ah'
 alias lh='l -d .?*'
 alias ld='l -d */'
@@ -75,7 +72,7 @@ alias rc='rails c'
 alias rj='bundle exec que ./config/environment.rb'
 
 #start pgcli with a rails db
-alias rd='startDB'
+alias rd='opendb'
 
 alias sshconfig='vim ~/.ssh/config'
 alias grouper='ssh grouper'

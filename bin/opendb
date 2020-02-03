@@ -1,0 +1,25 @@
+#!/bin/bash
+
+usage="$(basename $0) [-h] DBNAME -- script to open a database using the pgcli command line tool and dynamically find rails dbname if in the project folder.
+
+
+where:
+    -h  show this help text
+
+    "
+
+function display_usage() {
+  echo "$usage"
+  return
+}
+
+if [ ! -z "$1" ]; then
+  pgcli $1
+else
+  RAILSDBNAME=$(echo "Rails.configuration.database_configuration['development']['database']" | rails c | grep '\"*\"' | sed 's/\"//g')
+  if [ ! -z "$RAILSDBNAME" ]; then
+    pgcli $RAILSDBNAME
+  else
+    display_usage
+  fi
+fi

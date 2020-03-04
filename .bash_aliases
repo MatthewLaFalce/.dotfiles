@@ -1,11 +1,11 @@
 #.bash_aliases
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  alias grep='grep --color=auto'
-fi
+# if [ -x /usr/bin/dircolors ]; then
+#   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=tty'
+  alias grep='grep --color=tty'
+# fi
 
 pushFunc(){
   git push || git push --set-upstream origin $(git branch | grep \* | cut -d ' ' -f2)

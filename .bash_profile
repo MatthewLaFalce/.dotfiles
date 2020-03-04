@@ -29,8 +29,9 @@ updateDotfiles() {
 }
 updateDotfiles
 
-export PATH="/usr/local/sbin:$PATH"
-export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md:$HOME/.dotfiles/bin
+export GOPATH=$HOME/go
+export PATH="/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md:$HOME/.dotfiles/bin:$GOPATH/bin
 export GPG_TTY=$(tty)
 export CLICOLOR=1
 export EDITOR=vim
@@ -43,9 +44,6 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export NVM_DIR="$HOME/.nvm"
 export PS1="\[\033[36m\]\u\[\033[94m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\[\033[95m\]\$(parse_git_branch)\[\033[00m\]$ "
-export PATH="/usr/local/sbin:$PATH"
-export GOPATH=$HOME/go
-export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md:$HOME/.dotfiles/bin/iterm_utils/:$GOPATH/bin
 
 HISTSIZE=1000                         # Set HISTSIZE length
 HISTFILESIZE=2000                     # Set HISTFILESIZE length

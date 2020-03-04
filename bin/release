@@ -24,6 +24,9 @@ if [ -z $major ] && [ -z $minor ] && [ -z $patch ];
 then
   echo "usage: $(basename $0) [Mmp] [message]"
   echo ""
+  echo "  Warning: if message is left blank, the default is to set"
+  echo "  the message to all the commits since the last tag."
+  echo ""
   echo "  -d Dry run"
   echo "  -h Display this help page"
   echo "  -M for a major release"
@@ -74,12 +77,22 @@ fi
 next_version="${a[0]}.${a[1]}.${a[2]}"
 
 username=$(git config user.name)
-msg="$1 by $username"
+last_tag=$(git describe --tags --abbrev=0)
+
+if [ ! -z $1 ]
+then
+  msg="$1
+  by $username"
+else
+  msg="$(git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph $last_tag..HEAD --oneline)
+by $username"
+fi
 
 # If its a dry run, just display the new release version number
 if [ ! -z $dry ]
 then
-  echo "Tag message: $msg"
+  echo "Tag message:"
+  echo "$msg"
   echo "Next version: v$next_version"
 else
   # If a command fails, exit the script
@@ -91,7 +104,7 @@ else
   # If it's not a dry run, let's go!
   # 3) Add git tag
   echo "Add git tag v$next_version with message: $msg"
-  git tag -s -a "v$next_version" -m "$msg"
+  git tag -a "v$next_version" -m "$msg"
 
   # 4) Push the new tag
 

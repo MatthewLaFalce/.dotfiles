@@ -6,14 +6,54 @@
 # 3) Add a new git tag
 # 4) Push the tag
 
+email_moderators(){
+  echo "Sending Email"
+  git log --pretty=format:'%h%Creset---%s' $(git describe --tags --abbrev=0)..HEAD  > /tmp/message.txt
+  echo "" >> /tmp/message.txt
+  echo "Subject: Docupiler Release v$next_version Created" >> /tmp/neil.html
+  echo 'Mime-Version: 1.0
+Content-Type: text/html
+<html><head>
+<style>
+.table { width: 100%; max-width: 100%; margin-bottom: 1rem; }
+.table th, .table td { padding: 0.75rem; vertical-align: top; border-top: 1px solid #eceeef; }
+.table thead th { vertical-align: bottom; border-bottom: 2px solid #eceeef; }
+.table tbody + tbody { border-top: 2px solid #eceeef; }
+.table .table { background-color: #fff; }
+.table-sm th, .table-sm td { padding: 0.3rem; }
+.table-hover tbody tr:hover { background-color: rgba(0, 0, 0, 0.075); }
+.table-active, .table-active > th, .table-active > td { background-color: rgba(0, 0, 0, 0.075); }
+.table-hover .table-active:hover { background-color: rgba(0, 0, 0, 0.075); }
+.table-hover .table-active:hover > td, .table-hover .table-active:hover > th { background-color: rgba(0, 0, 0, 0.075); }
+.thead-default th { color: #464a4c; background-color: #eceeef; }
+.table-responsive { display: block; width: 100%; overflow-x: auto; -ms-overflow-style: -ms-autohiding-scrollbar; }
+</style></head>' >> /tmp/neil.html
+echo "<h2>Docupiler Release v$next_version</h2>" >> /tmp/neil.html
+
+
+  echo '<table class="table table-sm table-responsive table-hover">' >> /tmp/neil.html;
+  echo "<tr><th>Commit</th><th>Message</th></td>" >> /tmp/neil.html;
+    while read INPUT ; do
+      echo "<tr><td style=\"color:MediumSeaGreen\">${INPUT//---/</td><td>}</td></tr>" >> /tmp/neil.html;
+    done < /tmp/message.txt;
+  echo "</table></html>" >> /tmp/neil.html;
+
+  cat /tmp/neil.html | sendmail -t;
+
+  rm /tmp/message.txt
+  rm /tmp/neil.html
+  echo "Email Sent"
+}
+
 # Parse command line options.
-while getopts ":Mmpd" Option
+while getopts ":Mmpde" Option
 do
   case $Option in
     M ) major=true;;
     m ) minor=true;;
     p ) patch=true;;
     d ) dry=true;;
+    e ) email=true;;
   esac
 done
 
@@ -32,6 +72,7 @@ then
   echo "  -M for a major release"
   echo "  -m for a minor release"
   echo "  -p for a patch release"
+  echo "  -e to email the message to the moderators"
   echo ""
   echo " Example: release -p \"Some fix\""
   echo " means create a patch release with the message \"Some fix\""
@@ -78,14 +119,13 @@ next_version="${a[0]}.${a[1]}.${a[2]}"
 
 username=$(git config user.name)
 last_tag=$(git describe --tags --abbrev=0)
-
 if [ ! -z $1 ]
 then
   msg="$1
   by $username"
 else
   msg="$(git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph $last_tag..HEAD --oneline)
-by $username"
+  by $username"
 fi
 
 # If its a dry run, just display the new release version number
@@ -94,6 +134,13 @@ then
   echo "Tag message:"
   echo "$msg"
   echo "Next version: v$next_version"
+
+  if [ ! -z $email ]
+  then
+    echo "To: matthew@winepos.com,mlafalce206@gmail.com " > /tmp/neil.html
+    email_moderators
+  fi
+
 else
   # If a command fails, exit the script
   set -e
@@ -112,5 +159,11 @@ else
   git push --tags origin master
 
   echo -e "\e[32mRelease done: $next_version\e[0m"
-fi
 
+  if [ ! -z $email ]
+  then
+    echo "To: matthew@winepos.com,jim@winepos.com " > /tmp/neil.html
+    email_moderators
+  fi
+
+fi

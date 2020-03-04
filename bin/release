@@ -8,8 +8,6 @@
 
 email_moderators(){
   echo "Sending Email"
-  git log --pretty=format:'%h%Creset---%s' $(git describe --tags --abbrev=0)..HEAD  > /tmp/message.txt
-  echo "" >> /tmp/message.txt
   echo "Subject: Docupiler Release v$next_version Created" >> /tmp/neil.html
   echo 'Mime-Version: 1.0
 Content-Type: text/html
@@ -126,6 +124,12 @@ then
 else
   msg="$(git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph $last_tag..HEAD --oneline)
   by $username"
+fi
+
+if [ ! -z $email ]
+then
+  git log --pretty=format:'%h%Creset---%s' $last_tag..HEAD  > /tmp/message.txt
+  echo "" >> /tmp/message.txt
 fi
 
 # If its a dry run, just display the new release version number

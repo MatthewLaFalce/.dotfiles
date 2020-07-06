@@ -3,6 +3,9 @@
 \pset null ¤
 \pset border 2
 
+--formatting
+\x auto
+
 --timing
 \timing
 

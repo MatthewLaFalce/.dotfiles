@@ -52,6 +52,7 @@ echo "Create symbolic links to configurations"
 ln -sf .dotfiles/.bash_profile
 ln -sf .dotfiles/.gitconfig
 ln -sf .dotfiles/.vimrc
+ln -sf .dotfiles/.pqslrc
 
 echo "Finished"
 exit 0

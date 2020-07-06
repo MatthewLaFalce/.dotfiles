@@ -45,6 +45,14 @@ export LESS_TERMCAP_us=$'\E[01;36m'
 export NVM_DIR="$HOME/.nvm"
 export PS1="\[\033[36m\]\u\[\033[94m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\[\033[95m\]\$(parse_git_branch)\[\033[00m\]$ "
 
+#These all help with psqlrc configuration
+export YELLOW=`echo -e '\033[1;33m'`
+export LIGHT_CYAN=`echo -e '\033[1;36m'`
+export GREEN=`echo -e '\033[0;32m'`
+export NOCOLOR=`echo -e '\033[0m'`
+export LESS="-iMSx4 -FXR"
+export PAGER="sed \"s/^\(([0-9]\+ [rows]\+)\)/$GREEN\1$NOCOLOR/;s/^\(-\[\ RECORD\ [0-9]\+\ \][-+]\+\)/$GREEN\1$NOCOLOR/;s/|/$GREEN|$NOCOLOR/g;s/^\([-+]\+\)/$GREEN\1$NOCOLOR/\" 2>/dev/null | less"
+
 HISTSIZE=1000                         # Set HISTSIZE length
 HISTFILESIZE=2000                     # Set HISTFILESIZE length
 HISTCONTROL=ignoreboth                # don't put duplicate lines or lines starting with space in the history.
@@ -64,7 +72,7 @@ if [ -f '/Users/Matt/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/Mat
 
 # The following line enables bash completion for the hub command
 # Repo: https://github.com/github/hub
-if [ -f /path/to/hub.bash_completion ]; then . /path/to/hub.bash_completion; fi
+if [ -f ~/.dotfiles/bin/hub.bash_completion ]; then . ~/.dotfiles/bin/hub.bash_completion; fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

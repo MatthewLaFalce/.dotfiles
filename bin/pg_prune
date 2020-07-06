@@ -1,0 +1,41 @@
+#!/usr/bin/awk -f
+
+# usage: STDOUT | pg_prune -v t=tablepattern
+
+# gunzip -dc intranet_production_30.tar.gz | pg_prune -v t='credentials|update_logs|encrypteds|database_backups' | psql intranet_development
+
+BEGIN {
+  # by default, do not screen lines
+  screen = "no";
+
+  # by default, screen out the following pattern
+  if ( t == "" ) t = "items_sold|sales_history|audit_history_template|cashier_log|last_6_weeks|cashier_balance|upc_isf|signatures|asi_|stock_";
+}
+
+
+# if this is the end of a copy statement force back to not screening
+/^\\\.$/ {
+  if ( screen == "no" ) {
+    print $0;
+  } else {
+    screen = "no";
+  }
+  next;
+
+}
+
+# if the table in the COPY statement matches the commandline pattern, then start to screen
+/COPY "?.*"?  ?FROM stdin/ {
+  if ($2 ~ t) {
+    screen = "yes";
+    next;
+  }
+}
+
+
+# the main loop is on a line which does not match any of the above patterns,
+# so print it out according to the 'screen' variable
+{
+  if ( screen == "no" )
+    print $0;
+}

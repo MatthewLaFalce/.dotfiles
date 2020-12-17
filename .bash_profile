@@ -91,6 +91,7 @@ if [ -d /usr/local/share/chruby ]; then
   source /usr/local/share/chruby/auto.sh
 
   RUBIES+=(~/.RVM/RUBIES/*)
+  RUBIES+=(~/.RUBIES/*)
 fi
 
 if [ -f .dotfiles/.bash_aliases ]; then

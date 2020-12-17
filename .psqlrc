@@ -9,9 +9,6 @@
 --timing
 \timing
 
---pager
-\pset pager always
-
 -- colorize
 --\set PROMPT1 '%n@%/%R%#%x '
 \set PROMPT1 '%[%033[36m%]%n%[%033[38;5;102m%]@%/%R%#%x '%[%033[0m%]

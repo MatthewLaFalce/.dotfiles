@@ -2,7 +2,6 @@ pushFunc(){
   git push || git push --set-upstream origin $(git branch | grep \* | cut -d ' ' -f2)
 }
 
-
 export TERM="xterm-256color" # This sets up colors properly
 export EDITOR='vim'
 
@@ -39,7 +38,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(rails zsh-autosuggestions zsh-syntax-highlighting chruby colored-man-pages jsontools)
+plugins=(rails zsh-autosuggestions zsh-syntax-highlighting chruby colored-man-pages jsontools colorize)
 source $ZSH/oh-my-zsh.sh
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
@@ -55,12 +54,18 @@ RUBIES+=(~/.rvm/rubies/*)
 # For a full list of active aliases, run `alias`.
 
 #basic
+alias ll='ls -l'
+alias lh='l -d .?*'
+alias ld='l -d */'
+alias lhd='l -d .?*/'
 alias zshconfig="vim ~/.zshrc"
 alias zshload="source ~/.zshrc"
+alias vimrc='vim ~/.vimrc'
 alias q="exit"
 alias c="clear"
 alias cl="clear; ls -lah"
 alias tree='c; tree --dirsfirst'
+alias gw='git-worklist'
 
 #git
 alias git='hub'
@@ -73,7 +78,7 @@ alias gd='git diff'
 alias gdd='c;gs;echo;echo;gd'
 alias gp='pushFunc'
 alias gt='git tree'
-alias gtt='gt master..$(current_branch)'
+alias gtt='gt main..$(current_branch)'
 alias github='open https://github.com/MatthewLaFalce'
 alias pull-request='git pull-request -a MatthewLaFalce'
 alias issues='git issue'
@@ -81,3 +86,5 @@ alias issue-create='git issue create -a MatthewLaFalce'
 
 #Optionally to hide the “user@hostname” info when you’re logged in as yourself on your local machine, this should be at the bottom of the file
 prompt_context(){}
+
+cd ~/Github

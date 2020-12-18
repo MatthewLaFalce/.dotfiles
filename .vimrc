@@ -1,6 +1,5 @@
 syntax on
 set nocompatible
-filetype off
 set number
 set splitbelow
 set splitright
@@ -9,6 +8,7 @@ set backspace=indent,eol,start
 
 
 call plug#begin('~/.vim/plugged')
+Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
@@ -79,6 +79,7 @@ set laststatus=2
 "jk is escape"
 inoremap jk <esc>
 map <silent> <C-n> :NERDTreeToggle<CR>
+map <F3> :noh<CR>
 map <F5> :setlocal spell! spelllang=en_us<CR>
 map <F6> :%!python -m json.tool<CR>
 map <F7> gg=G<C-o><C-o>

@@ -6,43 +6,6 @@
 # 3) Add a new git tag
 # 4) Push the tag
 
-email_moderators(){
-  echo "Sending Email"
-  echo "Subject: Docupiler Release v$next_version Created" >> /tmp/neil.html
-  echo 'Mime-Version: 1.0
-Content-Type: text/html
-<html><head>
-<style>
-.table { width: 100%; max-width: 100%; margin-bottom: 1rem; }
-.table th, .table td { padding: 0.75rem; vertical-align: top; border-top: 1px solid #eceeef; }
-.table thead th { vertical-align: bottom; border-bottom: 2px solid #eceeef; }
-.table tbody + tbody { border-top: 2px solid #eceeef; }
-.table .table { background-color: #fff; }
-.table-sm th, .table-sm td { padding: 0.3rem; }
-.table-hover tbody tr:hover { background-color: rgba(0, 0, 0, 0.075); }
-.table-active, .table-active > th, .table-active > td { background-color: rgba(0, 0, 0, 0.075); }
-.table-hover .table-active:hover { background-color: rgba(0, 0, 0, 0.075); }
-.table-hover .table-active:hover > td, .table-hover .table-active:hover > th { background-color: rgba(0, 0, 0, 0.075); }
-.thead-default th { color: #464a4c; background-color: #eceeef; }
-.table-responsive { display: block; width: 100%; overflow-x: auto; -ms-overflow-style: -ms-autohiding-scrollbar; }
-</style></head>' >> /tmp/neil.html
-echo "<h2>Docupiler Release v$next_version</h2>" >> /tmp/neil.html
-
-
-  echo '<table class="table table-sm table-responsive table-hover">' >> /tmp/neil.html;
-  echo "<tr><th>Commit</th><th>Message</th></td>" >> /tmp/neil.html;
-    while read INPUT ; do
-      echo "<tr><td style=\"color:MediumSeaGreen\">${INPUT//---/</td><td>}</td></tr>" >> /tmp/neil.html;
-    done < /tmp/message.txt;
-  echo "</table></html>" >> /tmp/neil.html;
-
-  cat /tmp/neil.html | sendmail -t;
-
-  rm /tmp/message.txt
-  rm /tmp/neil.html
-  echo "Email Sent"
-}
-
 # Parse command line options.
 while getopts ":Mmpde" Option
 do
@@ -51,7 +14,6 @@ do
     m ) minor=true;;
     p ) patch=true;;
     d ) dry=true;;
-    e ) email=true;;
   esac
 done
 
@@ -70,7 +32,6 @@ then
   echo "  -M for a major release"
   echo "  -m for a minor release"
   echo "  -p for a patch release"
-  echo "  -e to email the message to the moderators"
   echo ""
   echo " Example: release -p \"Some fix\""
   echo " means create a patch release with the message \"Some fix\""
@@ -78,7 +39,6 @@ then
 fi
 
 # 1) Fetch the current release version
-
 echo "Fetch tags"
 git fetch --prune --tags
 
@@ -88,13 +48,10 @@ version=${version:1} # Remove the v in the tag v0.37.10 for example
 echo "Current version: $version"
 
 # 2) Increase version number
-
 # Build array from version string.
-
 a=( ${version//./ } )
 
 # Increment version numbers as requested.
-
 if [ ! -z $major ]
 then
   ((a[0]++))
@@ -117,19 +74,14 @@ next_version="${a[0]}.${a[1]}.${a[2]}"
 
 username=$(git config user.name)
 last_tag=$(git describe --tags --abbrev=0)
-if [ ! -z $1 ]
+
+if [ ! -z "$1" ]
 then
   msg="$1
   by $username"
 else
   msg="$(git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph $last_tag..HEAD --oneline)
   by $username"
-fi
-
-if [ ! -z $email ]
-then
-  git log --pretty=format:'%h%Creset---%s' $last_tag..HEAD  > /tmp/message.txt
-  echo "" >> /tmp/message.txt
 fi
 
 # If its a dry run, just display the new release version number
@@ -139,18 +91,12 @@ then
   echo "$msg"
   echo "Next version: v$next_version"
 
-  if [ ! -z $email ]
-  then
-    echo "To: matthew@winepos.com,mlafalce206@gmail.com " > /tmp/neil.html
-    email_moderators
-  fi
-
 else
   # If a command fails, exit the script
   set -e
 
   # Push master
-  git push origin master
+  git push
 
   # If it's not a dry run, let's go!
   # 3) Add git tag
@@ -158,16 +104,9 @@ else
   git tag -a "v$next_version" -m "$msg"
 
   # 4) Push the new tag
-
   echo "Push the tag"
-  git push --tags origin master
+  git push --tags
 
   echo -e "\e[32mRelease done: $next_version\e[0m"
-
-  if [ ! -z $email ]
-  then
-    echo "To: matthew@winepos.com,jim@winepos.com " > /tmp/neil.html
-    email_moderators
-  fi
 
 fi

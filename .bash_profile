@@ -52,7 +52,7 @@ export LIGHT_CYAN=`echo -e '\033[1;36m'`
 export GREEN=`echo -e '\033[0;32m'`
 export NOCOLOR=`echo -e '\033[0m'`
 export LESS="-iMSx4 -FXR"
-export PAGER="sed \"s/^\(([0-9]\+ [rows]\+)\)/$GREEN\1$NOCOLOR/;s/^\(-\[\ RECORD\ [0-9]\+\ \][-+]\+\)/$GREEN\1$NOCOLOR/;s/|/$GREEN|$NOCOLOR/g;s/^\([-+]\+\)/$GREEN\1$NOCOLOR/\" 2>/dev/null | less"
+# export PAGER="sed \"s/^\(([0-9]\+ [rows]\+)\)/$GREEN\1$NOCOLOR/;s/^\(-\[\ RECORD\ [0-9]\+\ \][-+]\+\)/$GREEN\1$NOCOLOR/;s/|/$GREEN|$NOCOLOR/g;s/^\([-+]\+\)/$GREEN\1$NOCOLOR/\" 2>/dev/null | less"
 
 HISTSIZE=1000                         # Set HISTSIZE length
 HISTFILESIZE=2000                     # Set HISTFILESIZE length
@@ -119,5 +119,15 @@ if [ -f "${SSH_ENV}" ]; then
 else
   start_agent;
 fi
+
+#Add shell completion for gh command (The offical Github CLI)
+eval "$(gh completion -s bash)"
+
+# Add shell completion for tasty-cli command
+complete -F get_tasty_cli_targets tasty-cli
+function get_tasty_cli_targets()
+{
+  COMPREPLY=(`tasty-cli help -c "${COMP_WORDS[@]:1}"`)
+}
 
 cd ~/Github;c

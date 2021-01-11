@@ -4,7 +4,7 @@
 \pset border 2
 
 --formatting
-\x auto
+/* \x auto */
 
 --timing
 \timing

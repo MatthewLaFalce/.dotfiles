@@ -15,6 +15,10 @@ openFunc(){
   open $1 2>/dev/null || start $1
 }
 
+defaultBranch(){
+  git remote show origin | grep 'HEAD' | cut -d':' -f2 | sed -e 's/^ *//g' -e 's/ *$//g'
+}
+
 currentBranch(){
   git branch | grep \* | cut -d ' ' -f2
 }
@@ -49,7 +53,6 @@ alias dotfile='cd; cd .dotfiles/'
 alias jek='bundle _1.16.0_ exec jekyll serve'
 
 #git
-alias git='hub'
 alias gu='git up'
 alias gs='git status -sb'
 alias gc='git commit'
@@ -59,11 +62,9 @@ alias gd='git diff'
 alias gdd='c;gs;echo;echo;gd'
 alias gp='pushFunc'
 alias gt='git tree'
-alias gtt='gt master..$(currentBranch)'
+alias gtt='gt $(defaultBranch)..$(currentBranch)'
 alias github='open https://github.com/MatthewLaFalce'
-alias pull-request='git pull-request -a MatthewLaFalce'
-alias issues='git issue'
-alias issue-create='git issue create -a MatthewLaFalce'
+alias issues='gh issues'
 
 #rails
 # alias rails='bundle exec rails'

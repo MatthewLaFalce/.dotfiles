@@ -6,11 +6,12 @@
 
 __powerline() {
     # Colorscheme
-    readonly RESET='\[\033[m\]'
-    readonly COLOR_CWD='\[\033[0;94m\]' # purple
-    readonly COLOR_GIT='\[\033[0;93m\]' # yellow
+    readonly RESET='\[\033[m\]'             # No Color
+    readonly COLOR_CWD='\[\033[0;94m\]'     # purple
+    readonly COLOR_GIT='\[\033[0;93m\]'     # yellow
     readonly COLOR_SUCCESS='\[\033[0;32m\]' # green
     readonly COLOR_FAILURE='\[\033[0;31m\]' # red
+    readonly COLOR_RUBY="\[\033[0;91m\]"    # High IntensityRed
 
     readonly SYMBOL_GIT_BRANCH='⑂'
     readonly SYMBOL_GIT_MODIFIED='*'
@@ -25,7 +26,7 @@ __powerline() {
       esac
     fi
 
-    __git_info() { 
+    __git_info() {
         [[ $POWERLINE_GIT = 0 ]] && return # disabled
         hash git 2>/dev/null || return # git not found
         local git_eng="env LANG=C git"   # force git output in English to make our work easier
@@ -62,7 +63,7 @@ __powerline() {
 
     ps1() {
         # Check the exit code of the previous command and display different
-        # colors in the prompt accordingly. 
+        # colors in the prompt accordingly.
         if [ $? -eq 0 ]; then
             local symbol="$COLOR_SUCCESS $PS_SYMBOL $RESET"
         else
@@ -83,7 +84,10 @@ __powerline() {
             local git="$COLOR_GIT$(__git_info)$RESET"
         fi
 
-        PS1="$cwd$git$symbol"
+        local ruby_version='$(ruby --version | cut -f2 -d\ )'
+        local ruby="$COLOR_RUBY $ruby_version $RESET"
+
+        PS1="$cwd$ruby$git$symbol"
     }
 
     PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"

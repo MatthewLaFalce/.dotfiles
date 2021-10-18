@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'rss'
+require 'open-uri'
+require 'rainbow'
+
+source  = "http://feeds.urbandictionary.com/UrbanWordOfTheDay"
+todays_word = ""
+URI.open(source) do |rss|
+  feed = RSS::Parser.parse(rss)
+
+  todays_word = feed.items.first
+end
+
+# Grab the title and description, striping out html tags
+puts Rainbow(todays_word.title).yellow.bright.underline
+puts todays_word.description.gsub!(/<("[^"]*"|'[^']*'|[^'">])*>/,'').strip

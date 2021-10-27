@@ -13,5 +13,5 @@ URI.open(source) do |rss|
 end
 
 # Grab the title and description, striping out html tags
-puts Rainbow(todays_word.title).yellow.bright.underline
+puts Rainbow(todays_word.title).mediumseagreen.bright.underline
 puts todays_word.description.gsub!(/<("[^"]*"|'[^']*'|[^'">])*>/,'').strip

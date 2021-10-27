@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+
+require 'rss'
+require 'open-uri'
+require 'rainbow'
+require 'terminal-table'
+
+def print_article feed
+  # Grab the title and publish date and create the header string
+  title = feed.title
+  pub_date = feed.pubDate.strftime('%b %d, %Y')
+  header = "#{title} (#{pub_date})"
+  colored_header = Rainbow(header).mediumseagreen.bright.underline
+
+  # Grab the description, striping out html tags
+  description = feed.description.gsub!(/<("[^"]*"|'[^']*'|[^'">])*>/,'').strip
+
+  # Get the link to the full article
+  link = Rainbow(feed.link).deepskyblue
+
+  # Split the description into 20 word sentances in an array
+  descr = description.split
+  counter = 0
+  descr_rows = []
+  while counter < descr.count do
+    descr_rows << descr[counter..counter+19].join(' ')
+    counter+=20
+  end
+
+  # Create the Terminal::Table so everthing looks nice and pretty on the console.
+  table = Terminal::Table.new({ title: colored_header }) do |t|
+    descr_rows.each do |r|
+      t.add_row [r]
+    end
+    t.add_separator
+    t.add_row [link]
+  end
+
+  # Default table style is ascii so we cange to unicode
+  table.style = { border: :unicode }
+
+  # Print everything out on the console
+  puts table
+  puts ""
+  puts ""
+end
+
+def isToday? dateString
+  dateString == today
+end
+
+puts ""
+puts ""
+URI.open("https://lifehacker.com/rss") do |rss|
+  # Parse the current feed
+  feed = RSS::Parser.parse(rss)
+  today = Time.now.strftime('%b %d, %Y')
+
+  # Get the most recent feed items for the current day
+  feed.items.each do |item|
+    itemDate = item.pubDate.strftime('%b %d, %Y')
+    print_article(item) if today.eql?(itemDate)
+  end
+end

@@ -28,7 +28,7 @@ updateDotfiles() {
   fi
 }
 updateDotfiles
-
+export $TERM=xterm-256color
 export GOPATH=$HOME/go
 export PATH="/usr/local/sbin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md:$HOME/.dotfiles/bin:$GOPATH/bin

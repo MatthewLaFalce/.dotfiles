@@ -73,7 +73,7 @@ if [ -f '/Users/Matt/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/Mat
 
 # The following line enables bash completion for the hub command
 # Repo: https://github.com/github/hub
-if [ -f ~/.dotfiles/bin/hub.bash_completion ]; then . ~/.dotfiles/bin/hub.bash_completion; fi
+# if [ -f ~/.dotfiles/bin/hub.bash_completion ]; then . ~/.dotfiles/bin/hub.bash_completion; fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

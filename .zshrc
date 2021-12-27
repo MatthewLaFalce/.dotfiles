@@ -2,8 +2,23 @@ pushFunc(){
   git push || git push --set-upstream origin $(git branch | grep \* | cut -d ' ' -f2)
 }
 
+updateDotfiles() {
+  if ping -q -c 1 -W 1 github.com > /dev/null 2>&1; then
+    cd ~/.dotfiles; git fetch
+    # % status=$(git status -sb)
+    if [[ $(git status -sb) == *"behind"* ]]; then
+      echo "Config files: Behind"
+      git up
+      source .bash_profile
+      echo "Config files: Updated"
+    fi
+    cd
+  fi
+}
+updateDotfiles
 export TERM="xterm-256color" # This sets up colors properly
 export EDITOR='vim'
+export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md:$HOME/.dotfiles/bin
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -40,9 +55,13 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(rails zsh-autosuggestions zsh-syntax-highlighting chruby colored-man-pages jsontools colorize)
 source $ZSH/oh-my-zsh.sh
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-RUBIES+=(~/.rvm/rubies/*)
+if [ -d /usr/local/share/chruby ]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+
+  RUBIES+=(~/.RVM/RUBIES/*)
+  RUBIES+=(~/.RUBIES/*)
+fi
 
 # User configuration
 
@@ -66,9 +85,8 @@ alias c="clear"
 alias cl="clear; ls -lah"
 alias tree='c; tree --dirsfirst'
 alias gw='git-worklist'
-
+alias dotfile='cd ~/.dotfiles'
 #git
-alias git='hub'
 alias gu='git up'
 alias gs='git status -sb'
 alias gc='git commit'
@@ -88,3 +106,8 @@ alias issue-create='git issue create -a MatthewLaFalce'
 prompt_context(){}
 
 cd ~/Github
+export PATH="/usr/local/opt/maven@3.5/bin:$PATH"
+if [ "$(uname)" = "Linux" ]; then
+elif [ "$(uname)" = "Darwin" ]; then
+  export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home"
+fi

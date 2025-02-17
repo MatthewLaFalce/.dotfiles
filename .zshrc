@@ -15,10 +15,13 @@ updateDotfiles() {
     cd
   fi
 }
+
+startingDir=$(pwd)
+
 updateDotfiles
 export TERM="xterm-256color" # This sets up colors properly
 export EDITOR='vim'
-export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md:$HOME/.dotfiles/bin
+export PATH=$PATH:$HOME/bin:$HOME/Github/schema_to_md:$HOME/.dotfiles/bin:$(go env GOPATH)/bin
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -105,9 +108,15 @@ alias issue-create='git issue create -a MatthewLaFalce'
 #Optionally to hide the “user@hostname” info when you’re logged in as yourself on your local machine, this should be at the bottom of the file
 prompt_context(){}
 
-cd ~/Github
+# Prevent 'cd' from running if VS Code is launching the terminal
+if [[ "$TERM_PROGRAM" != "vscode" && -z "$VSCODE_CWD" ]]; then
+  cd ~/Github
+else
+  cd $startingDir
+fi
 export PATH="/usr/local/opt/maven@3.5/bin:$PATH"
 if [ "$(uname)" = "Linux" ]; then
 elif [ "$(uname)" = "Darwin" ]; then
   export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home"
 fi
+source ~/.dotfiles/zsh/aliases.zsh

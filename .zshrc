@@ -134,4 +134,10 @@ export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 # Symlink all scripts from work_utils to ~/bin
 ln -sf "$HOME/Github/work_utils/bin/*" "$HOME/bin/"
 
+if [ -d "$HOME/.dotfiles/.claude/skills" ] && [ -d "$HOME/.claude" ]; then
+  mkdir -p "$HOME/.claude/skills"
+  for skill in "$HOME/.dotfiles/.claude/skills"/*/; do
+    ln -sfn "$skill" "$HOME/.claude/skills/$(basename "$skill")"
+  done
+fi
 

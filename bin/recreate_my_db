@@ -1,0 +1,52 @@
+#!/bin/bash
+
+set -euo pipefail
+
+usage="$(basename "$0") [-h] DBNAME FILENAME -- script to drop and recreate a database from a gzip file
+
+where:
+    -h  show this help text
+    DBNAME    name of the database to drop and recreate
+    FILENAME  path to a gzip file to restore from
+    "
+
+function display_usage() {
+  echo "$usage"
+  exit 1
+}
+
+if [[ "${1:-}" == "-h" ]]; then
+  display_usage
+fi
+
+if [[ -z "${1:-}" || -z "${2:-}" ]]; then
+  display_usage
+fi
+
+dbname="$1"
+filename="$2"
+
+if [[ ! -f "$filename" ]]; then
+  echo "Error: file '$filename' not found" >&2
+  exit 1
+fi
+
+echo "Dropping database '$dbname'..."
+if ! dropdb --if-exists "$dbname"; then
+  echo "Error: failed to drop database '$dbname'" >&2
+  exit 1
+fi
+
+echo "Creating database '$dbname'..."
+if ! createdb "$dbname"; then
+  echo "Error: failed to create database '$dbname'" >&2
+  exit 1
+fi
+
+echo "Restoring from '$filename'..."
+if ! gzip -dc "$filename" | psql "$dbname" >/dev/null; then
+  echo "Error: failed to restore database '$dbname' from '$filename'" >&2
+  exit 1
+fi
+
+echo "Database '$dbname' recreated successfully."

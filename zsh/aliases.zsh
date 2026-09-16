@@ -37,7 +37,7 @@ function ssh-aliases() {
 
   for i in $(grep "^Host " ~/.ssh/config | awk '{print $2}')
   do
-    alias $i="ssh $i "
+    alias $i="ssh $i"
   done
 }
 ssh-aliases
